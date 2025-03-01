@@ -6,3 +6,12 @@ export const BACKGROUND_IMG =
 
 export const USER_ICON =
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81iX4Mo49Z3oCPSx-GtgiMAkdDop2uVmVvw&s';
+
+export const API_OPTIONS = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZjY0Y2U5NGMxZTM2MGExZTQ5YjQ3NTI2YzM3MjEyZSIsIm5iZiI6MTc0MDgxNDY0NS44ODMwMDAxLCJzdWIiOiI2N2MyYjkzNWJmNjYwNzc0ODk2ZGRkOTQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.9KWDkSwMw4OXSalQD9zXyETFtYDucpT71Ar4iJVIXkM',
+  },
+};

@@ -8,14 +8,13 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/UserSlice';
+import { USER_ICON } from '../utils/constants';
 
 const Login = () => {
   const [isSignedIn, setIsSignedIn] = useState(true);
   const [warning, setWarning] = useState('');
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -40,8 +39,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              'https://media.licdn.com/dms/image/v2/C5603AQHLrQmxn-ll6g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1638017176626?e=1746057600&v=beta&t=KevSR65LPIPbNylNYCbQ98oao5Cxv0N8GDm2Zx7ZQe0',
+            photoURL: USER_ICON,
           })
             .then(() => {
               const { uid, email, password, displayName, photoURL } =
@@ -49,7 +47,6 @@ const Login = () => {
               dispatch(
                 addUser({ uid, email, password, displayName, photoURL })
               );
-              navigate('/browse');
             })
             .catch((error) => {
               setWarning(error.message);
@@ -69,7 +66,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate('/browse');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -79,7 +75,7 @@ const Login = () => {
     }
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = () => {
     setIsSignedIn(!isSignedIn);
   };
   return (
